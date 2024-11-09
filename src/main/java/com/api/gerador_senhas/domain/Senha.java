@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -16,6 +17,7 @@ public class Senha {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "SENHA_ID")
     private UUID uuid;
 
     private int numero;
@@ -24,4 +26,7 @@ public class Senha {
     private LocalDateTime dataGerada;
 
     private boolean status;
+
+    @OneToOne(mappedBy = "senha")
+    private Atendimento atendimento;
 }

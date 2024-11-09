@@ -24,4 +24,8 @@ public class Atendimento {
     private LocalDateTime fim;
 
     private String observacao;
+
+    @OneToOne
+    @JoinColumn(name = "SENHA_ID")
+    private Senha senha;
 }
