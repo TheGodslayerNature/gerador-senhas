@@ -27,4 +27,8 @@ public class Atendente {
 
     @OneToMany(mappedBy = "atendente", cascade = CascadeType.ALL)
     private List<Atendimento> atendimentos;
+
+    @ManyToOne
+    @JoinColumn(name = "GUINCHE_ID", referencedColumnName = "GUINCHE_ID")
+    private Guinche guinche;
 }
