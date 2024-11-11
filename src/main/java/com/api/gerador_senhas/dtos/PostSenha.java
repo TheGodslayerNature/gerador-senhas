@@ -1,5 +1,6 @@
 package com.api.gerador_senhas.dtos;
 
+import com.api.gerador_senhas.domain.Atendimento;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,4 +16,5 @@ public class PostSenha {
     private int numero;
     private LocalDateTime dataGerada;
     private boolean status;
+    private Atendimento atendimento;
 }
