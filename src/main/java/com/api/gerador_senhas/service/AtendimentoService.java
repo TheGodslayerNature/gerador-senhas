@@ -29,7 +29,8 @@ public class AtendimentoService {
         Atendimento atendimentoToSave = Atendimento.builder()
                 .inicio(LocalDateTime.now())
                 .fim(null)
-                .observacao(atendimento.getObservacao()).build();
+                .observacao(atendimento.getObservacao())
+                .atendente(atendimento.getAtendente()).build();
 
         return repository.save(atendimentoToSave);
     }
@@ -44,7 +45,8 @@ public class AtendimentoService {
                 .atendimentoId(atendimento.getAtendimentoId())
                 .inicio(atendimento.getInicio())
                 .fim(atendimento.getFim())
-                .observacao(atendimento.getObservacao()).build();
+                .observacao(atendimento.getObservacao())
+                .atendente(atendimento.getAtendente()).build();
         return repository.save(atendimentoToSave);
     }
 }

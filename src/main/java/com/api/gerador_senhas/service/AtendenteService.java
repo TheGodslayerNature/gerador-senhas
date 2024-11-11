@@ -37,6 +37,7 @@ public class AtendenteService {
     }
 
     public void delete(UUID id) {
+        getAtendente(id);
         repository.delete(getAtendente(id));
     }
 
@@ -45,7 +46,8 @@ public class AtendenteService {
                 .atendente_id(atendente.getAtendente_id())
                 .nome(atendente.getNome())
                 .email(atendente.getEmail())
-                .senha(atendente.getSenha()).build();
+                .senha(atendente.getSenha())
+                .atendimentos(atendente.getAtendimentos()).build();
     }
 
 

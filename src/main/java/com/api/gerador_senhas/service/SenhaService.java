@@ -33,11 +33,12 @@ public class SenhaService {
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Senha não encontrada"));
     }
 
-    public Senha gerarSenha() {
+    public Senha gerarSenha(PostSenha request) {
         PostSenha postSenha = PostSenha.builder()
                 .numero(criarNumero())
                 .dataGerada(LocalDateTime.now())
-                .status(true).build();
+                .status(true)
+                .atendimento(request.getAtendimento()).build();
         return repository.save(senhaMapper.toSenha(postSenha));
     }
 
@@ -48,7 +49,6 @@ public class SenhaService {
     public Senha editSenha(PutSenha putSenha) {
         getSenha(putSenha.getUuid());
         Senha senha = senhaMapper.toSenha(putSenha);
-        senha.setUuid(putSenha.getUuid());
         return repository.save(senha);
     }
 

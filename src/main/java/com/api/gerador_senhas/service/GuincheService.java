@@ -35,6 +35,7 @@ public class GuincheService {
 
     public Guinche editGuinche(Guinche guinche) {
         return Guinche.builder().guincheId(guinche.getGuincheId())
-                .numero(guinche.getNumero()).build();
+                .numero(guinche.getNumero())
+                .atendentes(guinche.getAtendentes()).build();
     }
 }

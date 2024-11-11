@@ -1,6 +1,7 @@
 package com.api.gerador_senhas.controller;
 
 import com.api.gerador_senhas.domain.Senha;
+import com.api.gerador_senhas.dtos.PostSenha;
 import com.api.gerador_senhas.dtos.PutSenha;
 import com.api.gerador_senhas.service.SenhaService;
 import org.springframework.http.HttpStatus;
@@ -31,8 +32,8 @@ public class ControllerSenha {
     }
 
     @PostMapping("/gerar")
-    public ResponseEntity<Senha> gerarSenha(){
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.gerarSenha());
+    public ResponseEntity<Senha> gerarSenha(@RequestBody PostSenha requestSenha){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.gerarSenha(requestSenha));
     }
 
     @DeleteMapping("/{id}")
