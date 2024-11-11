@@ -3,6 +3,7 @@ package com.api.gerador_senhas.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,4 +24,7 @@ public class Atendente {
     private String email;
 
     private String senha;
+
+    @OneToMany(mappedBy = "atendente", cascade = CascadeType.ALL)
+    private List<Atendimento> atendimentos;
 }

@@ -28,4 +28,8 @@ public class Atendimento {
     @OneToOne
     @JoinColumn(name = "SENHA_ID")
     private Senha senha;
+
+    @ManyToOne
+    @JoinColumn(name = "ATENDENTE_ID", referencedColumnName = "ATENDENTE_ID")
+    private Atendente atendente;
 }
