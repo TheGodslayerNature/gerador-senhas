@@ -1,9 +1,10 @@
 package com.api.gerador_senhas.controller;
 
 import com.api.gerador_senhas.domain.Senha;
-import com.api.gerador_senhas.dtos.PostSenha;
-import com.api.gerador_senhas.dtos.PutSenha;
+import com.api.gerador_senhas.dtos.senhaDtos.PostSenha;
+import com.api.gerador_senhas.dtos.senhaDtos.PutSenha;
 import com.api.gerador_senhas.service.SenhaService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class ControllerSenha {
     }
 
     @PutMapping("/edit")
-    public ResponseEntity<Senha> editSenha(@RequestBody PutSenha putSenha){
+    public ResponseEntity<Senha> editSenha(@RequestBody @Valid PutSenha putSenha){
         return ResponseEntity.ok(service.editSenha(putSenha));
     }
 }
