@@ -1,8 +1,9 @@
 package com.api.gerador_senhas.service;
 
 import com.api.gerador_senhas.domain.Senha;
-import com.api.gerador_senhas.dtos.PostSenha;
-import com.api.gerador_senhas.dtos.PutSenha;
+import com.api.gerador_senhas.dtos.senhaDtos.PostSenha;
+import com.api.gerador_senhas.dtos.senhaDtos.PutSenha;
+import com.api.gerador_senhas.exceptions.NotFoundGenerico;
 import com.api.gerador_senhas.mapper.SenhaMapper;
 import com.api.gerador_senhas.repository.SenhaRepository;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,7 @@ public class SenhaService {
 
     private final SenhaRepository repository;
     private final SenhaMapper senhaMapper;
-
-    private int maxNumero = 5;
     private int actualNumero = 0;
-    private int minNumero = 0;
 
     public SenhaService(SenhaRepository repository, SenhaMapper senhaMapper) {
         this.repository = repository;
@@ -30,7 +28,7 @@ public class SenhaService {
     }
 
     public Senha getSenha(UUID id){
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Senha não encontrada"));
+        return repository.findById(id).orElseThrow(() -> new NotFoundGenerico("Senha não encontrada"));
     }
 
     public Senha gerarSenha(PostSenha request) {
@@ -53,13 +51,6 @@ public class SenhaService {
     }
 
     private int criarNumero(){
-        if (actualNumero == maxNumero){
-            actualNumero = 1;
-            return actualNumero;
-        } else if (actualNumero >= minNumero) {
-            actualNumero++;
-            return actualNumero;
-        }
-        return 1;
+        return actualNumero++;
     }
 }
