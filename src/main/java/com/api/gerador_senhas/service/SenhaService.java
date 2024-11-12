@@ -51,6 +51,6 @@ public class SenhaService {
     }
 
     private int criarNumero(){
-        return actualNumero++;
+        return ++actualNumero;
     }
 }
